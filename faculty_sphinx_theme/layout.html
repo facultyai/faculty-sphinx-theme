@@ -1,0 +1,50 @@
+{% extends "sphinx_rtd_theme/layout.html" %}
+
+{# Default to Faculty favicon #}
+{% if not favicon %}
+  {% set favicon = "images/favicon.ico" %}
+{% endif %}
+
+{% set css_files = css_files + [
+    "_static/css/faculty.css",
+    "https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Roboto:400,700|Roboto+Mono:400,700&display=swap"
+] %}
+
+{% if theme_navigation | tobool %}
+  {% set css_files = css_files + ["_static/css/navigation.css"] %}
+{% endif %}
+
+{% block extrabody %}
+
+  {% macro docs_path(document) -%}
+    {{ pathto(theme_navigation_root + document, 1) }}
+  {%- endmacro %}
+
+  {% if theme_navigation | tobool %}
+
+    <nav class="platform-docs-navigation">
+
+      <a href="{{ docs_path('index.html') }}">
+        <img class="logo" src="{{ pathto('_static/images/faculty.svg', 1) }}"/>
+      </a>
+
+      <ul>
+        <li class="component">
+          <a href="{{ docs_path('user-guide/index.html') }}">User guide</a>
+          <!-- Example menu links:
+            <ul>
+              <li class="section"><a>Section 1</a></li>
+              <li class="section"><a>Section 2</a></li>
+            </ul>
+          -->
+        </li>
+        <li class="component">
+          <a href="{{ docs_path('library/index.html') }}">Python library</a>
+        </li>
+      </ul>
+
+    </nav>
+
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,102 @@
+/* Body defaults */
+body {
+  color: #1c1c1c;
+  background-color: #f9f9f9;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, legend,
+.rst-content .toctree-wrapper p.caption,
+.rst-content .sidebar .sidebar-title,
+.rst-content .topic-title {
+  font-weight: normal;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+.rst-content .topic-title {
+  font-size: 24px;
+}
+
+/* Body text */
+body, input, textarea, .rst-versions {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Code / fixed width text */
+code,
+.rst-content .linenodiv pre,
+.rst-content code,
+.rst-content div[class^='highlight'] pre,
+.rst-content footer span.commit tt,
+.rst-content kbd,
+.rst-content pre,
+.rst-content pre.literal-block,
+.rst-content samp,
+.rst-content tt,
+footer span.commit code,
+footer span.commit .rst-content tt {
+  font-family: "Roboto Mono", monospace;
+}
+
+/* Links */
+.rst-content a, .rst-content a:visited {
+  color: #fa7268;
+}
+
+/* Breadcrumbs */
+.wy-breadcrumbs li.breadcrumb {
+  padding-right: 5px;
+}
+
+/* Definition lists */
+.rst-content dl:not(.docutils) dt {
+  color: #fa7268;
+  border-top: solid 3px #fa7268;
+  background: #ffefee;
+}
+
+/* Page main content */
+.wy-nav-content {
+  background-color: #ffffff;
+}
+.wy-nav-content-wrap {
+  background-color: unset;
+}
+
+/* Navigation bars */
+.wy-nav-side, .wy-nav-top {
+  background: #1c1c1c;
+}
+.wy-side-nav-search {
+  background-color: unset;
+}
+.wy-side-nav-search > a {
+  color: #ffffff;
+}
+.wy-nav-side {
+  padding-bottom: 0px;
+}
+
+/* Navifation menu */
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+  font-size: 17px;
+  font-weight: normal;
+  text-transform: unset;
+  color: #ffffff;
+  padding-left: 23px;
+  padding-right: 23px;
+  margin-bottom: 4px;
+}
+.wy-menu-vertical a {
+  color: #c0c0c0;
+  padding-left: 23px;
+  padding-right: 23px;
+}
+.wy-menu-vertical li.current > a {
+  color: #1c1c1c;
+  background-color: #ffffff;
+}
+.wy-menu-vertical li.toctree-l2 a,
+.wy-menu-vertical li.toctree-l3 a,
+.wy-menu-vertical li.toctree-l4 a {
+  color: #1c1c1c;
+}
