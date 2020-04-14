@@ -4,30 +4,60 @@
 {% if not favicon %}
   {% set favicon = "images/favicon.ico" %}
 {% endif %}
+{# Default to Faculty logo #}
+{% if not logo %}
+  {% set logo = "images/faculty.svg" %}
+{% endif %}
 
 {% set css_files = css_files + [
     "_static/css/faculty.css",
     "https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Roboto:400,700|Roboto+Mono:400,700&display=swap"
 ] %}
 
-{% if theme_navigation | tobool %}
-  {% set css_files = css_files + ["_static/css/navigation.css"] %}
-{% endif %}
+{% macro docs_path(document) -%}
+  {{ pathto(theme_navigation_root + document, 1) }}
+{%- endmacro %}
 
-{% block extrabody %}
-
-  {% macro docs_path(document) -%}
-    {{ pathto(theme_navigation_root + document, 1) }}
-  {%- endmacro %}
+{% block sidebartitle %}
 
   {% if theme_navigation | tobool %}
+    <a class="heading" href="{{ docs_path('index.html') }}">
+      <div class="logo-box">
+        <img class="logo" src="{{ pathto('_static/' + logo, 1) }}"/>
+      </div>
+    </a>
+    {% if not theme_logo_only %}
+      <a href="{{ pathto(master_doc) }}" class="icon icon-home"> {{ project }}</a>
+    {% endif %}
+  {% else %}
+    <a class="heading heading-extra-margin" href="{{ pathto(master_doc) }}">
+      <div class="logo-box logo-box-large">
+        <img class="logo" src="{{ pathto('_static/' + logo, 1) }}"/>
+      </div>
+      {% if not theme_logo_only %}
+        <span class="icon icon-home"> {{ project }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
 
+  {% if theme_display_version %}
+    {%- set nav_version = version %}
+    {% if READTHEDOCS and current_version %}
+      {%- set nav_version = current_version %}
+    {% endif %}
+    {% if nav_version %}
+      <div class="version">{{ nav_version }}</div>
+    {% endif %}
+  {% endif %}
+
+  {% include "searchbox.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+  {% if theme_navigation | tobool %}
     <nav class="platform-docs-navigation">
-
-      <a href="{{ docs_path('index.html') }}">
-        <img class="logo" src="{{ pathto('_static/images/faculty.svg', 1) }}"/>
-      </a>
-
       <ul>
         <li class="component">
           <a href="{{ docs_path('user-guide/index.html') }}">User guide</a>
@@ -42,9 +72,9 @@
           <a href="{{ docs_path('library/index.html') }}">Python library</a>
         </li>
       </ul>
-
     </nav>
-
   {% endif %}
+
+  {{ super() }}
 
 {% endblock %}
