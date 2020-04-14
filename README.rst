@@ -7,6 +7,13 @@ theme <https://sphinx-rtd-theme.readthedocs.io/>`_, but with Faculty branding
 and an optional navigation bar for use in the `Faculty platform docs
 <https://docs.faculty.ai>`_.
 
+Installation
+------------
+
+.. code-block:: bash
+
+    pip install faculty-sphinx-theme
+
 Usage
 -----
 
