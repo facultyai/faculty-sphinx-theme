@@ -57,6 +57,7 @@ footer span.commit .rst-content tt {
 /* Page main content */
 .wy-nav-content {
   background-color: #ffffff;
+  padding: 26px 52px;
 }
 .wy-nav-content-wrap {
   background-color: unset;
@@ -68,6 +69,7 @@ footer span.commit .rst-content tt {
 }
 .wy-side-nav-search {
   background-color: unset;
+  padding: 13px;
 }
 .wy-side-nav-search > a {
   color: #ffffff;
@@ -99,4 +101,89 @@ footer span.commit .rst-content tt {
 .wy-menu-vertical li.toctree-l3 a,
 .wy-menu-vertical li.toctree-l4 a {
   color: #1c1c1c;
+}
+
+/* Faculty logo and project title */
+.wy-side-nav-search > a.heading {
+  width: 300px;
+  margin: -13px -13px 0px;
+  padding: 0px;
+  transition: .3s;
+}
+.wy-side-nav-search > a.heading.heading-extra-margin {
+  margin-bottom: .4em;
+}
+.heading > span {
+  color: #ffffff;
+  font-weight: bold;
+  display: inline-block;
+  padding: 4px 6px;
+  margin-bottom: .4em;
+}
+.wy-side-nav-search > a.heading .logo-box {
+  height: 50px;
+  padding: 5px;
+}
+.wy-side-nav-search > a.heading .logo-box.logo-box-large {
+  padding: 10px;
+  height: 70px;
+}
+.wy-side-nav-search > a.heading .logo-box img.logo {
+  height: 100%;
+  padding: 0px;
+}
+
+/* Navigation bar */
+.platform-docs-navigation {
+  margin: -26px -52px 26px;
+  width: calc(100vw - 300px);
+  line-height: 50px;
+  background-color: #1c1c1c;
+}
+
+/* Hide navigation bar on small screens */
+@media (max-width: 768px) {
+  .platform-docs-navigation {
+    display: none;
+  }
+}
+
+/* Lay out navigation bar entries */
+.platform-docs-navigation ul {
+  display: flex;
+  flex: 1;
+  transition: .3s;
+}
+.platform-docs-navigation li {
+  flex: 1;
+  position: relative;
+  transition: .3s;
+  text-align: left;
+  max-width: 12rem;
+}
+.platform-docs-navigation .component > ul {
+  left: 0;
+  top: 100%;
+  display: none;
+  background-color: #1c1c1c;
+}
+
+/* Expand menus on hover */
+.platform-docs-navigation .component:hover > ul {
+  display: block;
+}
+
+/* Links in navigation bar */
+.platform-docs-navigation a {
+  display: block;
+  text-align: center; /* Temporary: Remove once menus filled */
+  /* padding-left: 1rem; Temporary: Restore once menus filled */
+  color: #ffffff;
+}
+
+/* Highlight elements with coral on hover */
+.wy-side-nav-search > a.heading:hover,
+.platform-docs-navigation .component:hover,
+.platform-docs-navigation .section:hover {
+  background-color: #fa7268;
 }
