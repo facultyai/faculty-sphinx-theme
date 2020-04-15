@@ -37,16 +37,16 @@ and modify the ``html_theme`` setting to:
 Theme options
 +++++++++++++
 
-To enable the Faculty platform docs navigation bar, set the ``navigation``
+To enable the Faculty platform docs navigation bar, set the ``platform_navbar``
 option to ``True``. The navigation bar will, by default, link to the actual
 docs at `<https://docs.faculty.ai/>`_, but this can be overridden with the
-``navigation_root`` setting.
+``platform_navbar_root`` setting.
 
 Example entry in ``conf.py``:
 
 .. code-block:: python
 
     html_theme_options = {
-        "navigation": True,
-        "navigation_root": "/my/local/directory",
+        "platform_navbar": True,
+        "platform_navbar_root": "/my/local/directory",
     }

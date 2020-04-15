@@ -134,7 +134,7 @@ footer span.commit .rst-content tt {
 }
 
 /* Navigation bar */
-.platform-docs-navigation {
+.platform-navbar {
   margin: -26px -52px 26px;
   width: calc(100vw - 300px);
   line-height: 50px;
@@ -143,25 +143,25 @@ footer span.commit .rst-content tt {
 
 /* Hide navigation bar on small screens */
 @media (max-width: 768px) {
-  .platform-docs-navigation {
+  .platform-navbar {
     display: none;
   }
 }
 
 /* Lay out navigation bar entries */
-.platform-docs-navigation ul {
+.platform-navbar ul {
   display: flex;
   flex: 1;
   transition: .3s;
 }
-.platform-docs-navigation li {
+.platform-navbar li {
   flex: 1;
   position: relative;
   transition: .3s;
   text-align: left;
   max-width: 12rem;
 }
-.platform-docs-navigation .component > ul {
+.platform-navbar .component > ul {
   left: 0;
   top: 100%;
   display: none;
@@ -169,12 +169,12 @@ footer span.commit .rst-content tt {
 }
 
 /* Expand menus on hover */
-.platform-docs-navigation .component:hover > ul {
+.platform-navbar .component:hover > ul {
   display: block;
 }
 
 /* Links in navigation bar */
-.platform-docs-navigation a {
+.platform-navbar a {
   display: block;
   text-align: center; /* Temporary: Remove once menus filled */
   /* padding-left: 1rem; Temporary: Restore once menus filled */
@@ -183,7 +183,7 @@ footer span.commit .rst-content tt {
 
 /* Highlight elements with coral on hover */
 .wy-side-nav-search > a.heading:hover,
-.platform-docs-navigation .component:hover,
-.platform-docs-navigation .section:hover {
+.platform-navbar .component:hover,
+.platform-navbar .section:hover {
   background-color: #fa7268;
 }
