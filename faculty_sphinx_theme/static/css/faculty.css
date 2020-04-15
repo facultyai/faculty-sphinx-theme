@@ -135,10 +135,15 @@ footer span.commit .rst-content tt {
 
 /* Navigation bar */
 .platform-navbar {
-  margin: -26px -52px 26px;
+  position: fixed;
+  top: 0px;
+  left: 300px;
   width: calc(100vw - 300px);
   line-height: 50px;
   background-color: #1c1c1c;
+}
+.platform-navbar + div {
+  margin-top: 50px;
 }
 
 /* Hide navigation bar on small screens */
