@@ -35,6 +35,7 @@ code,
 footer span.commit code,
 footer span.commit .rst-content tt {
   font-family: "Roboto Mono", monospace;
+  font-size: 14px;
 }
 
 /* Links */
