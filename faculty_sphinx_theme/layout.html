@@ -14,14 +14,14 @@
     "https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Roboto:400,700|Roboto+Mono:400,700&display=swap"
 ] %}
 
-{% macro docs_path(document) -%}
-  {{ pathto(theme_navigation_root + document, 1) }}
+{% macro platform_docs_url(document) -%}
+  {{ pathto(theme_platform_navbar_root + document, 1) }}
 {%- endmacro %}
 
 {% block sidebartitle %}
 
-  {% if theme_navigation | tobool %}
-    <a class="heading" href="{{ docs_path('index.html') }}">
+  {% if theme_platform_navbar | tobool %}
+    <a class="heading" href="{{ platform_docs_url('index.html') }}">
       <div class="logo-box">
         <img class="logo" src="{{ pathto('_static/' + logo, 1) }}"/>
       </div>
@@ -56,11 +56,11 @@
 
 {% block content %}
 
-  {% if theme_navigation | tobool %}
+  {% if theme_platform_navbar | tobool %}
     <nav class="platform-docs-navigation">
       <ul>
         <li class="component">
-          <a href="{{ docs_path('user-guide/index.html') }}">User guide</a>
+          <a href="{{ platform_docs_url('user-guide/index.html') }}">User guide</a>
           <!-- Example menu links:
             <ul>
               <li class="section"><a>Section 1</a></li>
@@ -69,7 +69,7 @@
           -->
         </li>
         <li class="component">
-          <a href="{{ docs_path('library/index.html') }}">Python library</a>
+          <a href="{{ platform_docs_url('library/index.html') }}">Python library</a>
         </li>
       </ul>
     </nav>
