@@ -30,7 +30,7 @@ setup(
     packages=["faculty_sphinx_theme"],
     use_scm_version={"version_scheme": "post-release"},
     setup_requires=["setuptools_scm"],
-    install_requires=["sphinx_rtd_theme"],
+    install_requires=["sphinx-rtd-theme==0.4.3"],
     package_data={
         "faculty_sphinx_theme": [
             "theme.conf",
@@ -43,6 +43,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        "sphinx.html_themes": ["faculty-sphinx-theme = faculty_sphinx_theme"]
+        "sphinx.html_themes": ["faculty-sphinx-theme = faculty_sphinx_theme"],
     },
 )
