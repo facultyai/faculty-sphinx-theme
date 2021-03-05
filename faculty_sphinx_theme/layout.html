@@ -14,14 +14,32 @@
     "https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Roboto:400,700|Roboto+Mono:400,700&display=swap"
 ] %}
 
-{% macro platform_docs_url(document) -%}
-  {{ pathto(theme_platform_navbar_root + document, 1) }}
+{% macro navbar_entry(heading, content) -%}
+  {% if heading.strip() %}
+    {% set (heading_title, heading_url) = heading.strip().split() %}
+    <li class="component">
+      <a href="{{ heading_url }}">{{ heading_title }}</a>
+      {% set menu_items = content.split(",") %}
+      {% if menu_items %}
+        <ul>
+          {% for entry in menu_items %}
+            {% if entry %}
+              {% set (entry_title, entry_url) = entry.strip().split() %}
+              <li class="section">
+                <a href="{{ entry_url }}">{{ entry_title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endif %}
 {%- endmacro %}
 
 {% block sidebartitle %}
 
-  {% if theme_platform_navbar | tobool %}
-    <a class="heading" href="{{ platform_docs_url('index.html') }}">
+  {% if theme_navbar | tobool %}
+    <a class="heading" href="{{ theme_navbar_root }}">
       <div class="logo-box">
         <img class="logo" src="{{ pathto('_static/' + logo, 1) }}"/>
       </div>
@@ -56,21 +74,14 @@
 
 {% block content %}
 
-  {% if theme_platform_navbar | tobool %}
+  {% if theme_navbar | tobool %}
     <nav class="platform-navbar">
       <ul>
-        <li class="component">
-          <a href="{{ platform_docs_url('user-guide/index.html') }}">User guide</a>
-          <!-- Example menu links:
-            <ul>
-              <li class="section"><a>Section 1</a></li>
-              <li class="section"><a>Section 2</a></li>
-            </ul>
-          -->
-        </li>
-        <li class="component">
-          <a href="{{ platform_docs_url('library/index.html') }}">Python library</a>
-        </li>
+        {{ navbar_entry(theme_navbar_0_heading, theme_navbar_0_content) }}
+        {{ navbar_entry(theme_navbar_1_heading, theme_navbar_1_content) }}
+        {{ navbar_entry(theme_navbar_2_heading, theme_navbar_2_content) }}
+        {{ navbar_entry(theme_navbar_3_heading, theme_navbar_3_content) }}
+        {{ navbar_entry(theme_navbar_4_heading, theme_navbar_4_content) }}
       </ul>
     </nav>
   {% endif %}
