@@ -37,16 +37,40 @@ and modify the ``html_theme`` setting to:
 Theme options
 +++++++++++++
 
-To enable the Faculty platform docs navigation bar, set the ``platform_navbar``
-option to ``True``. The navigation bar will, by default, link to the actual
-docs at `<https://docs.faculty.ai/>`_, but this can be overridden with the
-``platform_navbar_root`` setting.
-
-Example entry in ``conf.py``:
+The theme provides an optional extra navbar with custom links. To enable it,
+use the ``navbar`` settings. You'll probably also want to set the
+``navbar_root`` setting which defines the link on the "Faculty logo":
 
 .. code-block:: python
 
     html_theme_options = {
-        "platform_navbar": True,
-        "platform_navbar_root": "/my/local/directory",
+        "navbar": True,
+        "navbar_root": "https://docs.faculty.ai/",
+    }
+
+To add entries to the navbar, use the ``navbar_{0,1,2,3,4}_heading`` settings.
+It's expected to be a string with the heading and linked URL separated by a
+space, for example:
+
+.. code-block:: python
+
+    html_theme_options = {
+        "navbar": True,
+        "navbar_root": "https://docs.faculty.ai/",
+        "navbar_0_heading": "Other https://other.faculty.ai/",
+        "navbar_1_heading": "More https://more.faculty.ai/",
+    }
+
+You can also add menu items that appear under navbar entries with the
+``navbar_{0,1,2,3,4}_content`` settings. They are in the same format as the
+``_heading`` settings, with comma separation, for example:
+
+.. code-block:: python
+
+    html_theme_options = {
+        "navbar": True,
+        "navbar_root": "https://docs.faculty.ai/",
+        "navbar_0_heading": "Other https://other.faculty.ai/",
+        "navbar_0_content": "Sub 1 https://other.faculty.ai/one, Sub 2 https://other.faculty.ai/two",
+        "navbar_1_heading": "More https://more.faculty.ai/",
     }
