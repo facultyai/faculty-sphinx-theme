@@ -16,7 +16,7 @@
 
 {% macro navbar_entry(heading, content) -%}
   {% if heading.strip() %}
-    {% set (heading_title, heading_url) = heading.strip().split() %}
+    {% set (heading_title, heading_url) = heading.strip().rsplit(None, 1) %}
     <li class="component">
       <a href="{{ heading_url }}">{{ heading_title }}</a>
       {% set menu_items = content.split(",") %}
@@ -24,7 +24,7 @@
         <ul>
           {% for entry in menu_items %}
             {% if entry %}
-              {% set (entry_title, entry_url) = entry.strip().split() %}
+              {% set (entry_title, entry_url) = entry.strip().rsplit(None, 1) %}
               <li class="section">
                 <a href="{{ entry_url }}">{{ entry_title }}</a>
               </li>
