@@ -165,7 +165,7 @@ footer span.commit .rst-content tt {
   text-align: left;
   max-width: 12rem;
 }
-.platform-navbar .component > ul {
+.platform-navbar .platform-navbar-section > ul {
   left: 0;
   top: 100%;
   display: none;
@@ -173,20 +173,25 @@ footer span.commit .rst-content tt {
 }
 
 /* Expand menus on hover */
-.platform-navbar .component:hover > ul {
+.platform-navbar .platform-navbar-section:hover > ul {
   display: block;
 }
 
 /* Links in navigation bar */
-.platform-navbar a {
+.platform-navbar .platform-navbar-link {
   display: block;
-  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
   color: #ffffff;
+}
+.platform-navbar .platform-navbar-link i {
+  float: right;
+  line-height: 50px;
 }
 
 /* Highlight elements with coral on hover */
 .wy-side-nav-search > a.heading:hover,
-.platform-navbar .component:hover,
-.platform-navbar .section:hover {
+.platform-navbar .platform-navbar-section:hover,
+.platform-navbar .platform-navbar-entry:hover {
   background-color: #fa7268;
 }
