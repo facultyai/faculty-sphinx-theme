@@ -38,39 +38,77 @@ Theme options
 +++++++++++++
 
 The theme provides an optional extra navbar with custom links. To enable it,
-use the ``navbar`` settings. You'll probably also want to set the
-``navbar_root`` setting which defines the link on the "Faculty logo":
+use the ``faculty_navbar`` settings. You'll probably also want to set the
+``faculty_navbar_root`` setting which defines the link on the "Faculty logo":
 
 .. code-block:: python
 
     html_theme_options = {
-        "navbar": True,
-        "navbar_root": "https://docs.faculty.ai/",
+        "faculty_navbar": True,
+        "faculty_navbar_root": "https://docs.faculty.ai/",
     }
 
-To add entries to the navbar, use the ``navbar_{0,1,2,3,4}_heading`` settings.
-It's expected to be a string with the heading and linked URL separated by a
-space, for example:
+To add entries to the navbar, add sections to the ``faculty_navbar_content``
+setting:
 
 .. code-block:: python
 
     html_theme_options = {
-        "navbar": True,
-        "navbar_root": "https://docs.faculty.ai/",
-        "navbar_0_heading": "Other https://other.faculty.ai/",
-        "navbar_1_heading": "More https://more.faculty.ai/",
+        "faculty_navbar": True,
+        "faculty_navbar_root": "https://docs.faculty.ai/",
+        "faculty_navbar_content": [
+            {"title": "Section 1", "url": "https://sectionone.com/"},
+            {"title": "Section 2", "url": "https://sectiontwo.com/"},
+        ]
     }
 
-You can also add menu items that appear under navbar entries with the
-``navbar_{0,1,2,3,4}_content`` settings. They are in the same format as the
-``_heading`` settings, with comma separation, for example:
+You can also add menu items that appear on hover below the section headings.
+To add these, use the ``entries`` key on a section:
 
 .. code-block:: python
 
     html_theme_options = {
-        "navbar": True,
-        "navbar_root": "https://docs.faculty.ai/",
-        "navbar_0_heading": "Other https://other.faculty.ai/",
-        "navbar_0_content": "Sub 1 https://other.faculty.ai/one, Sub 2 https://other.faculty.ai/two",
-        "navbar_1_heading": "More https://more.faculty.ai/",
+        "faculty_navbar": True,
+        "faculty_navbar_root": "https://docs.faculty.ai/",
+        "faculty_navbar_content": [
+            {
+                "title": "Section 1",
+                "url": "https://sectionone.com/",
+                "entries": [
+                    {
+                        "title": "Section 1.1",
+                        "url": "https://sectionone.com/one",
+                    },
+                    {
+                        "title": "Section 1.2",
+                        "url": "https://sectionone.com/one",
+                    },
+                ]
+            },
+            {"title": "Section 2", "url": "https://sectiontwo.com/"},
+        ]
+    }
+
+It's also possible to mark sections and entries as ``external``, meaning they
+will open in a separate tab, or to omit the URL entirely for e.g. section
+headings:
+
+.. code-block:: python
+
+    html_theme_options = {
+        "faculty_navbar": True,
+        "faculty_navbar_root": "https://docs.faculty.ai/",
+        "faculty_navbar_content": [
+            {
+                "title": "No URL",
+                "entries": [
+                    {
+                        "title": "External link",
+                        "url": "https://external.com/",
+                        "external": True
+                    },
+                ]
+            },
+            {"title": "Section 2", "url": "https://sectiontwo.com/"},
+        ]
     }

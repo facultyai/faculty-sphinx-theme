@@ -14,32 +14,23 @@
     "https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Roboto:400,700|Roboto+Mono:400,700&display=swap"
 ] %}
 
-{% macro navbar_entry(heading, content) -%}
-  {% if heading.strip() %}
-    {% set (heading_title, heading_url) = heading.strip().rsplit(None, 1) %}
-    <li class="component">
-      <a href="{{ heading_url }}">{{ heading_title }}</a>
-      {% set menu_items = content.split(",") %}
-      {% if menu_items %}
-        <ul>
-          {% for entry in menu_items %}
-            {% if entry %}
-              {% set (entry_title, entry_url) = entry.strip().rsplit(None, 1) %}
-              <li class="section">
-                <a href="{{ entry_url }}">{{ entry_title }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </li>
-  {% endif %}
-{%- endmacro %}
+{% macro menu_link_content(record) -%}
+{{- record.title -}}
+{%- if record.external %}<i class="fa fa-external-link"></i>{% endif -%}
+{% endmacro %}
+
+{% macro menu_link(record) %}
+{%- if record.url is defined -%}
+<a class="platform-navbar-link" href="{{ record.url }}">{{ menu_link_content(record) }}</a>
+{%- else -%}
+<div class="platform-navbar-link">{{ menu_link_content(record) }}</div>
+{%- endif -%}
+{% endmacro %}
 
 {% block sidebartitle %}
 
-  {% if theme_navbar | tobool %}
-    <a class="heading" href="{{ theme_navbar_root }}">
+  {% if faculty_navbar %}
+    <a class="heading" href="{{ faculty_navbar_root }}">
       <div class="logo-box">
         <img class="logo" src="{{ pathto('_static/' + logo, 1) }}"/>
       </div>
@@ -74,14 +65,21 @@
 
 {% block content %}
 
-  {% if theme_navbar | tobool %}
+  {% if faculty_navbar %}
     <nav class="platform-navbar">
       <ul>
-        {{ navbar_entry(theme_navbar_0_heading, theme_navbar_0_content) }}
-        {{ navbar_entry(theme_navbar_1_heading, theme_navbar_1_content) }}
-        {{ navbar_entry(theme_navbar_2_heading, theme_navbar_2_content) }}
-        {{ navbar_entry(theme_navbar_3_heading, theme_navbar_3_content) }}
-        {{ navbar_entry(theme_navbar_4_heading, theme_navbar_4_content) }}
+        {% for section in faculty_navbar_content %}
+          <li class="platform-navbar-section">
+            {{ menu_link(section) }}
+            {% if section.entries is defined %}
+              <ul>
+                {% for entry in section.entries %}
+                  <li class="platform-navbar-entry">{{ menu_link(entry) }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
       </ul>
     </nav>
   {% endif %}
