@@ -21,7 +21,7 @@
 
 {% macro menu_link(record) %}
 {%- if record.url is defined -%}
-<a class="platform-navbar-link" href="{{ record.url }}">{{ menu_link_content(record) }}</a>
+<a class="platform-navbar-link" href="{{ record.url }}"{% if record.external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ menu_link_content(record) }}</a>
 {%- else -%}
 <div class="platform-navbar-link">{{ menu_link_content(record) }}</div>
 {%- endif -%}
