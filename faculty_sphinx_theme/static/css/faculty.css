@@ -195,3 +195,14 @@ footer span.commit .rst-content tt {
 .platform-navbar .platform-navbar-entry:hover {
   background-color: #fa7268;
 }
+
+/* Function docstring formatting for parameters */
+.classifier {
+  font-style: oblique;
+}
+
+.classifier:before {
+  font-style: normal;
+  margin: 0.5em;
+  content: ":";
+}
