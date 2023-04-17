@@ -30,7 +30,7 @@ setup(
     packages=["faculty_sphinx_theme"],
     use_scm_version={"version_scheme": "post-release"},
     setup_requires=["setuptools_scm"],
-    install_requires=["sphinx-rtd-theme==0.4.3"],
+    install_requires=["sphinx-rtd-theme==1.2.0"],
     package_data={
         "faculty_sphinx_theme": [
             "theme.conf",
